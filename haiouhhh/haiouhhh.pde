@@ -1,4 +1,6 @@
 PFont f;
+float speedX=5;
+float bD=12;
 
 void setup() {
   size(1000, 1000);
@@ -6,15 +8,21 @@ void setup() {
   smooth();
   f=loadFont("ShowcardGothic-Reg-48.vlw");
   textFont(f, 48);
-
 }
 void draw() {
   //word
   smooth();
   textSize(145);
-  fill(random(255), random(255), random(255), random(100, 250));
+  float c1=map(mouseX, 0, width, 40, 200);
+  float c2=map(mouseY, 0, height, 30, 160);
+  float c3=map(mouseY, 0, width, 100, 200);
+  fill(c1, c2, c3);
   background(22, 18, 15);
-  text("ARE YOU OK?", 12, 163);
+  text("ARE YOU OK?", bD, 163);
+  bD=bD+speedX;
+  if (bD>=width) {
+    bD=-width;
+  }
 
   //OUTLINE
   smooth();
